@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>{
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+}
+
+.prediction-card {
+    background: #ffffff;
+    margin-top: 50px;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0px 15px 30px rgba(0,0,0,0.2);
+}
+
+.title {
+    color: #4b0082;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 5px #667eea;
+    outline: none;
+}
+
+.predict-btn {
+    background: linear-gradient(to right, #ff512f, #dd2476);
+    color: white;
+    padding: 12px 35px;
+    border-radius: 30px;
+    border: none;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.predict-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 15px rgba(0,0,0,0.3);
+}
+/* PROFILE IMAGE */
+.profile-pic {
+    position: absolute;
+    left: 35px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.result {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.footer {
+    color: #555;
+}
+</style>
+    <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Ultra&display=swap" rel="stylesheet">
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- css -->
+    <link rel="stylesheet" href="static\css\style.css">
+    <title>Flask</title>
+
+</head>
+<body>
+
+<div class="container">
+    <div class="card prediction-card">
+        <img src="{{ url_for('static', filename='Images/siri.jpg') }}"
+     class="profile-pic"
+     alt="Profile Image">
+
+<!--         <img src="{{ url_for('static', filename='Images/siri.jpg') }}" class="profile-pic">-->
+        <h1 class="title text-center">🏡 Home Price Prediction</h1>
+
+        <form action="/predict" method="POST" class="text-center">
+
+            <div class="row">
+                <div class="col-md-4">
+                     <input type="text" name = 'bedrooms' placeholder="bedrooms"><br>
+                     <input type="text" name = 'bathrooms' placeholder="bathrooms"><br>
+                     <input type="text" name = 'floors' placeholder="floors"><br>
+                     <input type="text" name = 'sqft_Living' placeholder="sqft_Living"><br>
+                     <input type="text" name = 'view' placeholder="view"><br>
+                     <input type="text" name = 'condition' placeholder="condition"><br>
+
+                </div>
+
+                <div class="col-md-4">
+                    <input type="text" name = 'sqft_above' placeholder="sqft_above"><br>
+                    <input type="text" name = 'sqft_lot' placeholder="sqft_lot"><br>
+                    <input type="text" name = 'yr_built' placeholder="yr_built"><br>
+                    <input type="text" name = 'yr_renovated' placeholder="yr_renovated"><br>
+                    <input type="text" name = 'city' placeholder="city"><br>
+                    <input type="text" name = 'country' placeholder="country"><br>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" name = 'waterfront' placeholder="waterfront"><br>
+                    <input type="text" name = 'sqft_basement' placeholder="sqft_basement"><br>
+                    <input type="text" name = 'year' placeholder="year"><br>
+                    <input type="text" name = 'month' placeholder="month"><br>
+                    <input type="text" name = 'day' placeholder="day"><br>
+                </div>
+            </div>
+
+            <button class="btn predict-btn mt-3">Predict Price</button>
+
+        </form>
+
+     <h3 class="result">
+    Home Price = {{ prediction_text }}
+</h3>
+
+<br>
+
+<h4 class="footer">
+    Project by <strong>Srihitha</strong> 💙
+</h4>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+   </div>
+</body>
+</html>
